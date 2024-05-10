@@ -1,0 +1,138 @@
+basePath: /
+definitions:
+  car.Car:
+    properties:
+      id:
+        type: integer
+      mark:
+        type: string
+      model:
+        type: string
+      regNum:
+        type: string
+    type: object
+  car.CreateCarDTO:
+    properties:
+      reg_nums:
+        items:
+          type: string
+        type: array
+    type: object
+  car.UpdateCarDTO:
+    properties:
+      mark:
+        type: string
+      model:
+        type: string
+      regNum:
+        type: string
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: Тестовое задание на Go
+  title: car-service
+  version: "1.0"
+paths:
+  /api/:
+    get:
+      description: Getting all cars
+      operationId: get-cars
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/car.Car'
+            type: array
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: GetAllCars
+      tags:
+      - cars
+    patch:
+      consumes:
+      - application/json
+      description: Updating car by id
+      operationId: update-car
+      parameters:
+      - description: update car
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/car.UpdateCarDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Update car
+      tags:
+      - cars
+    post:
+      consumes:
+      - application/json
+      description: Creating cars
+      operationId: get-car
+      parameters:
+      - description: car dto
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/car.CreateCarDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: Add cars
+      tags:
+      - cars
+  /api/{id}:
+    delete:
+      description: Deleting car by id
+      operationId: delete-car
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: DeleteCar
+      tags:
+      - cars
+    get:
+      description: Getting car by id
+      operationId: get-car
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/car.Car'
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+      summary: GetCar
+      tags:
+      - cars
+swagger: "2.0"
