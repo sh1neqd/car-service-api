@@ -18,7 +18,7 @@ Api для добавления машин по их номеру
 ## Запуск проекта
   Необходимо склонировать репозиторий:
   ```
-     git clone https://github.com/sh1neqd/car-service-api
+     git clone github.com/sh1neqd/car-service-api
      git checkout main
 ```
   Далее запускаем проект с помощью docker-compose:
