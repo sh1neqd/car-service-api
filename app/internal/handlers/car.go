@@ -94,7 +94,7 @@ func (h *Handler) addCar(c *fiber.Ctx) error {
 
 	var counter int
 	for _, regNum := range cars.RegNums {
-		url := fmt.Sprintf("https://vasheApi.net/api?regNum=%s", regNum) //
+		url := fmt.Sprintf("https://vasheApi.net/api?regNum=%s", regNum) // НУЖНО ВСТАВИТЬ СВОЕ API
 
 		res, err := http.Get(url)
 		if err != nil {
